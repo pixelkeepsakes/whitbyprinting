@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Whitby Photo &amp; Poster Printing</title>
+<meta name="description" content="Photo prints, posters, memorial and wedding printing, and short-run flyers in Whitby, Ontario. Prints up to 17x22 inches. Pickup by appointment or local delivery.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Atkinson+Hyperlegible:wght@400;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a print-shop price sheet. Crop-marked hero with a to-scale size chart, then category price lists; paper names are short chips that link to one Papers section. */
+:root {
+  --paper: #f4f5f2;
+  --surface: #ffffff;
+  --ink: #1b1e23;
+  --muted: #5b616a;
+  --line: #d8dbd5;
+  --accent: #c0281f;      /* classic print-shop red */
+  --accent-soft: #fbe6e3;
+  --cyan: #1d6f86;        /* cyan ink, for paper chips */
+  --chip: #e8f1f3;
+  --mark: #9aa09a;        /* crop marks */
+
+  --display: "Archivo", "Arial Narrow", Arial, sans-serif;
+  --body: "Atkinson Hyperlegible", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+
+  --step--1: 0.875rem;
+  --step-0: 1rem;
+  --step-1: 1.2rem;
+  --step-2: 1.6rem;
+  --step-3: clamp(2rem, 1.4rem + 3vw, 3.4rem);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #131518; --surface: #1b1e23; --ink: #eceee9; --muted: #a4aab2;
+    --line: #2e333a; --accent: #ff6b5c; --accent-soft: #3a1e1b;
+    --cyan: #6cc6dd; --chip: #1e2e34; --mark: #5a6068;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #131518; --surface: #1b1e23; --ink: #eceee9; --muted: #a4aab2;
+  --line: #2e333a; --accent: #ff6b5c; --accent-soft: #3a1e1b;
+  --cyan: #6cc6dd; --chip: #1e2e34; --mark: #5a6068;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; }
+img { max-width: 100%; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: var(--step-0);
+  line-height: 1.55;
+}
+.wrap {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+a { color: inherit; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
+h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; line-height: 1.1; }
+p { margin: 0; }
+.mono { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+
+/* Header */
+.top { border-bottom: 1px solid var(--line); background: var(--surface); }
+.top .wrap { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 20px; padding-block: 14px; }
+.brand { font-family: var(--display); font-weight: 800; font-stretch: 112%; font-size: var(--step-1); letter-spacing: -0.01em; text-decoration: none; }
+.top .where { color: var(--muted); font-size: var(--step--1); }
+
+/* Hero */
+.hero .wrap { padding-block: 48px 40px; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 40px; align-items: center; }
+.eyebrow { font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+.hero h1 { font-size: var(--step-3); font-weight: 850; font-stretch: 118%; letter-spacing: -0.02em; }
+.hero h1 em { font-style: normal; color: var(--accent); }
+.hero .lede { margin-top: 18px; max-width: 58ch; font-size: var(--step-1); line-height: 1.5; }
+.facts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; padding: 0; list-style: none; }
+.facts li { font-size: var(--step--1); border: 1px solid var(--line); background: var(--surface); padding: 6px 10px; border-radius: 4px; }
+.facts b { font-family: var(--mono); font-weight: 500; }
+.cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+.btn { display: inline-block; text-decoration: none; font-weight: 700; padding: 11px 18px; border-radius: 4px; border: 1.5px solid var(--ink); }
+.btn.primary { background: var(--ink); color: var(--paper); }
+.btn.ghost { background: transparent; }
+
+/* Crop-marked sheet with size chart */
+.sheet { position: relative; background: var(--surface); padding: 22px; border: 1px solid var(--line); }
+.sheet::before, .sheet::after, .sheet .cm::before, .sheet .cm::after {
+  content: ""; position: absolute; width: 18px; height: 18px; border-color: var(--mark); border-style: solid;
+}
+.sheet::before { top: -10px; left: -10px; border-width: 0 1px 1px 0; }
+.sheet::after { top: -10px; right: -10px; border-width: 0 0 1px 1px; }
+.sheet .cm::before { bottom: -10px; left: -10px; border-width: 1px 1px 0 0; }
+.sheet .cm::after { bottom: -10px; right: -10px; border-width: 1px 0 0 1px; }
+.sheet svg { display: block; width: 100%; max-width: 100%; height: auto; }
+.sheet figcaption { margin-top: 10px; font-size: var(--step--1); color: var(--muted); }
+.sz rect { fill: none; stroke: var(--muted); stroke-width: 1; }
+.sz rect.max { stroke: var(--accent); stroke-width: 1.6; fill: var(--accent-soft); }
+.sz text { fill: var(--ink); font-family: var(--mono); font-size: 9px; }
+.sz text.max { fill: var(--accent); font-weight: 500; }
+
+/* Section nav */
+.jump { border-block: 1px solid var(--line); background: var(--surface); }
+.jump .wrap { display: flex; gap: 6px 18px; flex-wrap: wrap; padding-block: 12px; font-size: var(--step--1); }
+.jump a { text-decoration: none; color: var(--muted); }
+.jump a:hover { color: var(--ink); text-decoration: underline; }
+
+/* Price lists */
+main .wrap { padding-block: 24px 56px; }
+.cat { padding-block: 32px; border-bottom: 1px solid var(--line); scroll-margin-top: 16px; }
+.cat:last-of-type { border-bottom: 0; }
+.cat-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 16px; margin-bottom: 16px; }
+.cat h2 { font-size: var(--step-2); font-weight: 800; font-stretch: 110%; }
+.cat .from { font-size: var(--step--1); color: var(--muted); }
+.cat .from b { font-family: var(--mono); color: var(--ink); font-weight: 500; }
+.cat .intro { color: var(--muted); max-width: 64ch; margin: -6px 0 16px; }
+
+.list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  gap: 4px 18px;
+  align-items: baseline;
+  padding: 12px 2px;
+  border-bottom: 1px dotted var(--line);
+}
+.row .name { min-width: 0; }
+.row .name strong { font-weight: 700; }
+.row .size { font-family: var(--mono); font-weight: 500; margin-right: 6px; }
+.row .note { display: block; color: var(--muted); font-size: var(--step--1); }
+.row .price { font-family: var(--mono); font-variant-numeric: tabular-nums; font-weight: 500; text-align: right; white-space: nowrap; min-width: 6.5ch; }
+.row .price small { display: block; font-family: var(--body); font-size: 0.75rem; color: var(--muted); font-weight: 400; }
+.badge { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--accent); border: 1px solid currentColor; border-radius: 3px; padding: 0 5px; margin-left: 6px; vertical-align: 1px; }
+
+/* Paper chips */
+.paper {
+  position: relative; display: inline-block;
+  font-size: var(--step--1); font-weight: 700; text-decoration: none;
+  color: var(--cyan); background: var(--chip);
+  padding: 2px 9px; border-radius: 999px; white-space: nowrap;
+}
+.paper:hover { text-decoration: underline; }
+.paper .tip {
+  position: absolute; z-index: 5; right: 0; bottom: calc(100% + 8px);
+  width: min(300px, 78vw); white-space: normal;
+  background: var(--ink); color: var(--paper);
+  font-weight: 400; font-size: 0.82rem; line-height: 1.4;
+  padding: 10px 12px; border-radius: 6px;
+  opacity: 0; visibility: hidden; transition: opacity .15s;
+  pointer-events: none;
+}
+.paper:hover .tip, .paper:focus-visible .tip { opacity: 1; visibility: visible; }
+.paper .tip b { display: block; margin-bottom: 2px; }
+@media (hover: none) { .paper .tip { display: none; } }
+
+/* Papers section */
+.papers { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.pcard { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 18px; scroll-margin-top: 16px; transition: box-shadow .3s, border-color .3s; }
+.pcard:target { border-color: var(--cyan); box-shadow: 0 0 0 3px var(--chip); }
+.pcard h3 { font-size: var(--step-1); font-weight: 800; font-stretch: 105%; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; }
+.pcard h3 .tag { font-family: var(--body); font-size: var(--step--1); font-weight: 700; color: var(--cyan); background: var(--chip); padding: 1px 8px; border-radius: 999px; }
+.pcard .spec { font-family: var(--mono); font-size: 0.82rem; color: var(--muted); margin-top: 8px; }
+.pcard .plain { margin-top: 8px; }
+.pcard .use { margin-top: 10px; font-size: var(--step--1); color: var(--muted); }
+.pcard .back { display: inline-block; margin-top: 12px; font-size: var(--step--1); color: var(--muted); }
+
+/* Steps */
+.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; counter-reset: s; }
+.steps li { counter-increment: s; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 18px; }
+.steps li::before { content: counter(s); display: block; font-family: var(--mono); font-weight: 500; color: var(--accent); margin-bottom: 6px; }
+.steps b { display: block; margin-bottom: 4px; }
+.steps p { color: var(--muted); font-size: var(--step--1); }
+
+/* Contact */
+.contact { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.contact .card { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 18px; }
+.contact .label { font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.contact .value { font-size: var(--step-1); font-weight: 700; margin-top: 4px; user-select: all; overflow-wrap: anywhere; }
+.contact .fill { color: var(--accent); }
+
+footer { border-top: 1px solid var(--line); background: var(--surface); }
+footer .wrap { padding-block: 22px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 20px; color: var(--muted); font-size: var(--step--1); }
+
+@media (max-width: 760px) {
+  .hero .wrap { grid-template-columns: minmax(0, 1fr); gap: 32px; padding-block: 32px; }
+  .sheet { max-width: 340px; margin-inline: auto; width: calc(100% - 24px); }
+  .papers, .steps, .contact { grid-template-columns: minmax(0, 1fr); }
+  .row { grid-template-columns: minmax(0, 1fr) auto; }
+  .row .paper-cell { grid-column: 1; grid-row: 2; }
+  .row .price { grid-column: 2; grid-row: 1 / span 2; align-self: center; }
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top">Whitby Photo &amp; Poster Printing</a>
+    <span class="where">Pickup by appointment · Whitby, Ontario</span>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">Local print studio · Whitby, ON</p>
+      <h1>Photos and posters, printed <em>here in Whitby.</em></h1>
+      <p class="lede">Send a photo from your phone and get it printed as an enlargement up to 17×22 inches, or print posters for birthdays, events, school projects and community notices. We also print memorial photos and service programs, wedding and shower photos, and short runs of colour flyers and documents.</p>
+      <ul class="facts">
+        <li>Prints up to <b>17×22 in</b></li>
+        <li>Canon imagePROGRAF PRO-1100, <b>12 inks</b></li>
+        <li>Same-day by arrangement</li>
+        <li>Photo prints from <b>$3.99</b></li>
+      </ul>
+      <div class="cta-row">
+        <a class="btn primary" href="#contact">Get in touch</a>
+        <a class="btn ghost" href="#photos">See prices</a>
+      </div>
+    </div>
+
+    <figure class="sheet" style="margin:0">
+      <span class="cm" aria-hidden="true"></span>
+      <svg class="sz" viewBox="0 0 190 240" role="img" aria-labelledby="sz-title">
+        <title id="sz-title">Print sizes drawn to scale: 5×7, 8×10, 11×14, 16×20 and 17×22 inches</title>
+        <rect class="max" x="10" y="10" width="170" height="220"/>
+        <rect x="10" y="30" width="160" height="200"/>
+        <rect x="10" y="90" width="110" height="140"/>
+        <rect x="10" y="130" width="80" height="100"/>
+        <rect x="10" y="160" width="50" height="70"/>
+        <text class="max" x="176" y="22" text-anchor="end">17×22</text>
+        <text x="166" y="42" text-anchor="end">16×20</text>
+        <text x="116" y="102" text-anchor="end">11×14</text>
+        <text x="86" y="142" text-anchor="end">8×10</text>
+        <text x="56" y="172" text-anchor="end">5×7</text>
+      </svg>
+      <figcaption>Our print sizes, drawn to scale. The largest is 17×22 inches.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<nav class="jump" aria-label="Sections">
+  <div class="wrap">
+    <a href="#photos">Photo prints</a>
+    <a href="#posters">Posters</a>
+    <a href="#memorial">Memorial</a>
+    <a href="#weddings">Weddings &amp; showers</a>
+    <a href="#flyers">Flyers &amp; documents</a>
+    <a href="#upscaling">Upscaling</a>
+    <a href="#papers">Our papers</a>
+    <a href="#pickup">Pickup &amp; delivery</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<main>
+  <div class="wrap">
+
+    <section class="cat" id="photos">
+      <div class="cat-head"><h2>Photo prints &amp; enlargements</h2><p class="from">from <b>$3.99</b></p></div>
+      <ul class="list">
+        <li class="row"><span class="name"><span class="size">5×7</span>Photo print</span><span class="paper-cell"><a class="paper" href="#lustre">Lustre</a></span><span class="price">$3.99</span></li>
+        <li class="row"><span class="name"><span class="size">8×10</span>Photo print</span><span class="paper-cell"><a class="paper" href="#lustre">Lustre</a></span><span class="price">$7.99</span></li>
+        <li class="row"><span class="name"><span class="size">8×10</span>Photo print</span><span class="paper-cell"><a class="paper" href="#matte">Matte</a></span><span class="price">$7.99</span></li>
+        <li class="row"><span class="name"><span class="size">11×14</span>Photo print</span><span class="paper-cell"><a class="paper" href="#lustre">Lustre</a></span><span class="price">$16.99</span></li>
+        <li class="row"><span class="name"><span class="size">16×20</span>Enlargement<span class="badge">Free upscaling</span></span><span class="paper-cell"><a class="paper" href="#lustre">Lustre</a></span><span class="price">$29.99</span></li>
+        <li class="row"><span class="name"><span class="size">17×22</span>Enlargement<span class="badge">Free upscaling</span></span><span class="paper-cell"><a class="paper" href="#lustre">Lustre</a></span><span class="price">$34.99</span></li>
+      </ul>
+    </section>
+
+    <section class="cat" id="posters">
+      <div class="cat-head"><h2>Posters</h2><p class="from">from <b>$16.99</b></p></div>
+      <p class="intro">Birthdays, events, school projects and community notices. Bring your finished design or photo.</p>
+      <ul class="list">
+        <li class="row"><span class="name"><span class="size">11×17</span>Poster</span><span class="paper-cell"><a class="paper" href="#lustre">Lustre</a></span><span class="price">$16.99</span></li>
+        <li class="row"><span class="name"><span class="size">12×18</span>Poster</span><span class="paper-cell"><a class="paper" href="#lustre">Lustre</a></span><span class="price">$18.99</span></li>
+        <li class="row"><span class="name"><span class="size">16×20</span>Poster<span class="badge">Free upscaling</span></span><span class="paper-cell"><a class="paper" href="#lustre">Lustre</a></span><span class="price">$29.99</span></li>
+        <li class="row"><span class="name"><span class="size">17×22</span>Poster<span class="badge">Free upscaling</span></span><span class="paper-cell"><a class="paper" href="#lustre">Lustre</a></span><span class="price">$34.99</span></li>
+      </ul>
+    </section>
+
+    <section class="cat" id="memorial">
+      <div class="cat-head"><h2>Memorial printing</h2><p class="from">from <b>$2.50</b> each</p></div>
+      <p class="intro">Photos and programs for a celebration of life, printed locally and quickly. A proof is sent for approval before anything is printed.</p>
+      <ul class="list">
+        <li class="row"><span class="name"><span class="size">16×20</span>Easel photo<span class="badge">Free upscaling</span></span><span class="paper-cell"><a class="paper" href="#lustre">Lustre</a></span><span class="price">$29.99</span></li>
+        <li class="row"><span class="name"><span class="size">5×7</span>Table photo</span><span class="paper-cell"><a class="paper" href="#lustre">Lustre</a></span><span class="price">$3.99</span></li>
+        <li class="row"><span class="name"><span class="size">8×10</span>Table photo</span><span class="paper-cell"><a class="paper" href="#lustre">Lustre</a></span><span class="price">$7.99</span></li>
+        <li class="row"><span class="name"><span class="size">8.5×11</span>Folded service program<span class="note">Minimum 15</span></span><span class="paper-cell"><a class="paper" href="#mohawk">Mohawk Superfine</a></span><span class="price">$2.50<small>each</small></span></li>
+        <li class="row"><span class="name"><span class="size">11×17</span>4-page booklet program<span class="note">Folds to 8.5×11. Minimum 12</span></span><span class="paper-cell"><a class="paper" href="#mohawk">Mohawk Superfine</a></span><span class="price">$3.75<small>each</small></span></li>
+      </ul>
+    </section>
+
+    <section class="cat" id="weddings">
+      <div class="cat-head"><h2>Weddings &amp; showers</h2><p class="from">from <b>$2.00</b> each</p></div>
+      <p class="intro">Photos, signs, programs and menus for weddings, bridal and baby showers, and milestone birthdays.</p>
+      <ul class="list">
+        <li class="row"><span class="name"><span class="size">16×20</span>Couple or engagement photo<span class="badge">Free upscaling</span></span><span class="paper-cell"><a class="paper" href="#lustre">Lustre</a></span><span class="price">$29.99</span></li>
+        <li class="row"><span class="name"><span class="size">17×22</span>Welcome sign or seating chart<span class="badge">Free upscaling</span></span><span class="paper-cell"><a class="paper" href="#lustre">Lustre</a></span><span class="price">$34.99</span></li>
+        <li class="row"><span class="name"><span class="size">5×7</span>Table photo</span><span class="paper-cell"><a class="paper" href="#lustre">Lustre</a></span><span class="price">$3.99</span></li>
+        <li class="row"><span class="name"><span class="size">8×10</span>Table photo</span><span class="paper-cell"><a class="paper" href="#lustre">Lustre</a></span><span class="price">$7.99</span></li>
+        <li class="row"><span class="name"><span class="size">8.5×11</span>Folded program<span class="note">Minimum 15</span></span><span class="paper-cell"><a class="paper" href="#mohawk">Mohawk Superfine</a></span><span class="price">$2.50<small>each</small></span></li>
+        <li class="row"><span class="name"><span class="size">8.5×11</span>Menu<span class="note">Minimum 15</span></span><span class="paper-cell"><a class="paper" href="#mohawk">Mohawk Superfine</a></span><span class="price">$2.00<small>each</small></span></li>
+      </ul>
+    </section>
+
+    <section class="cat" id="flyers">
+      <div class="cat-head"><h2>Flyers, documents &amp; small posters</h2><p class="from">from <b>$0.75</b> each</p></div>
+      <p class="intro">Short runs in full colour, all 8.5×11.</p>
+      <ul class="list">
+        <li class="row"><span class="name">Colour flyers<span class="note">Minimum 60</span></span><span class="paper-cell"><a class="paper" href="#heavyweight">Heavyweight Matte</a></span><span class="price">$1.25<small>each</small></span></li>
+        <li class="row"><span class="name">Premium flyers on fine paper<span class="note">Minimum 30</span></span><span class="paper-cell"><a class="paper" href="#mohawk">Mohawk Superfine</a></span><span class="price">$1.75<small>each</small></span></li>
+        <li class="row"><span class="name">Colour documents and handouts<span class="note">Minimum 40</span></span><span class="paper-cell"><a class="paper" href="#heavyweight">Heavyweight Matte</a></span><span class="price">$1.00<small>per page</small></span></li>
+        <li class="row"><span class="name">Event and community posters<span class="note">Minimum 20</span></span><span class="paper-cell"><a class="paper" href="#heavyweight">Heavyweight Matte</a></span><span class="price">$2.50<small>each</small></span></li>
+        <li class="row"><span class="name">School project prints<span class="note">Minimum 15</span></span><span class="paper-cell"><a class="paper" href="#heavyweight">Heavyweight Matte</a></span><span class="price">$3.00<small>each</small></span></li>
+        <li class="row"><span class="name">Letterhead<span class="note">Minimum 50</span></span><span class="paper-cell"><a class="paper" href="#mohawk">Mohawk Superfine</a></span><span class="price">$0.75<small>per sheet</small></span></li>
+      </ul>
+    </section>
+
+    <section class="cat" id="upscaling">
+      <div class="cat-head"><h2>Photo upscaling</h2><p class="from">free on 16×20 and 17×22</p></div>
+      <p class="intro">Upscaling enlarges a good small image so it prints sharp at a bigger size. It's included free with any 16×20 or 17×22 print.</p>
+      <ul class="list">
+        <li class="row"><span class="name">Upscaling for a print order<span class="note">Per image, for prints smaller than 16×20</span></span><span class="paper-cell"></span><span class="price">$5.00</span></li>
+        <li class="row"><span class="name">Upscaled digital file<span class="note">Per image, high-resolution file only</span></span><span class="paper-cell"></span><span class="price">$10.00</span></li>
+      </ul>
+    </section>
+
+    <section class="cat" id="papers">
+      <div class="cat-head"><h2>Our papers</h2></div>
+      <p class="intro">You don't need to know paper to order. Tell us what the print is for and we'll recommend one. Here are the full details if you'd like them.</p>
+      <div class="papers">
+        <article class="pcard" id="lustre">
+          <h3>Canon Pro Luster LU-101 <span class="tag">Lustre</span></h3>
+          <p class="spec">255 gsm · 10.2 mil</p>
+          <p class="plain">Thick professional photo paper with a soft sheen that cuts glare.</p>
+          <p class="use">Used for photo prints, enlargements, posters, easel photos and signs.</p>
+          <a class="back" href="#photos">Back to prices</a>
+        </article>
+        <article class="pcard" id="matte">
+          <h3>Canon Pro Premium Matte PM-101 <span class="tag">Matte</span></h3>
+          <p class="spec">210 gsm · 12.2 mil</p>
+          <p class="plain">Thick, glare-free professional photo paper.</p>
+          <p class="use">Used for 8×10 photo prints when you'd like no shine at all.</p>
+          <a class="back" href="#photos">Back to prices</a>
+        </article>
+        <article class="pcard" id="mohawk">
+          <h3>Mohawk Superfine Eggshell <span class="tag">Mohawk Superfine</span></h3>
+          <p class="spec">80 lb text · 118 gsm · white · uncoated</p>
+          <p class="plain">Premium fine paper with a soft, slightly textured feel. Quality stationery weight, not cardstock.</p>
+          <p class="use">Used for programs, menus, premium flyers and letterhead.</p>
+          <a class="back" href="#memorial">Back to prices</a>
+        </article>
+        <article class="pcard" id="heavyweight">
+          <h3>HP HeavyWeight Matte Project Paper <span class="tag">Heavyweight Matte</span></h3>
+          <p class="spec">40 lb · 150 gsm</p>
+          <p class="plain">Smooth matte paper, about twice the weight of standard copy paper.</p>
+          <p class="use">Used for colour flyers, documents, small posters and school projects.</p>
+          <a class="back" href="#flyers">Back to prices</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="cat" id="how">
+      <div class="cat-head"><h2>How ordering works</h2></div>
+      <ol class="steps">
+        <li><b>Send your photo or file</b><p>A photo straight from your phone is fine. Tell us the size and what it's for.</p></li>
+        <li><b>We confirm the details</b><p>We check your file, recommend a paper, and confirm the price. Programs get a proof to approve first.</p></li>
+        <li><b>Pick up or get it delivered</b><p>Pick up in Whitby by appointment, or choose local delivery.</p></li>
+      </ol>
+    </section>
+
+    <section class="cat" id="pickup">
+      <div class="cat-head"><h2>Pickup &amp; delivery</h2><p class="from">free delivery over <b>$150</b></p></div>
+      <ul class="list">
+        <li class="row"><span class="name">Pickup in Whitby<span class="note">By appointment</span></span><span class="paper-cell"></span><span class="price">Free</span></li>
+        <li class="row"><span class="name">Delivery to south and central Whitby<span class="note">Free on orders over $150</span></span><span class="paper-cell"></span><span class="price">$15.00</span></li>
+        <li class="row"><span class="name">Delivery to Brooklin and north Whitby<span class="note">Free on orders over $150</span></span><span class="paper-cell"></span><span class="price">$25.00</span></li>
+      </ul>
+    </section>
+
+    <section class="cat" id="contact">
+      <div class="cat-head"><h2>Get in touch</h2></div>
+      <p class="intro">Contact us to confirm your print size and timing. Same-day printing is available by arrangement.</p>
+      <div class="contact">
+        <div class="card"><p class="label">Phone or text</p><p class="value mono">647-768-2239</p></div>
+        <div class="card"><p class="label">Email</p><p class="value">hello@whitbyphotoposterprinting.ca</p></div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Whitby Photo &amp; Poster Printing · Whitby, Ontario</span>
+    <span>647-768-2239 · hello@whitbyphotoposterprinting.ca</span>
+  </div>
+</footer>
+
+<script>
+  // Add a hover summary to each paper chip; the chip still links to the full details.
+  (function () {
+    var tips = {
+      lustre: ["Canon Pro Luster LU-101", "255 gsm, 10.2 mil. Thick professional photo paper with a soft sheen that cuts glare."],
+      matte: ["Canon Pro Premium Matte PM-101", "210 gsm, 12.2 mil. Thick, glare-free professional photo paper."],
+      mohawk: ["Mohawk Superfine Eggshell", "80 lb text (118 gsm), white, uncoated. Soft, slightly textured fine paper. Stationery weight, not cardstock."],
+      heavyweight: ["HP HeavyWeight Matte Project Paper", "40 lb (150 gsm). Smooth matte, about twice the weight of copy paper."]
+    };
+    document.querySelectorAll("a.paper").forEach(function (a) {
+      var key = a.getAttribute("href").slice(1);
+      var t = tips[key];
+      if (!t) return;
+      var s = document.createElement("span");
+      s.className = "tip";
+      s.setAttribute("role", "tooltip");
+      var b = document.createElement("b");
+      b.textContent = t[0];
+      s.appendChild(b);
+      s.appendChild(document.createTextNode(t[1]));
+      a.appendChild(s);
+      a.setAttribute("aria-label", a.firstChild.textContent + " paper: " + t[0] + ", " + t[1]);
+    });
+  })();
+</script>
+</body>
+</html>
